@@ -147,8 +147,7 @@ public class NaiveAgent implements Runnable {
  		List<ABObject> pigs = vision.findPigsMBR();
         List<ABObject> hill = vision.findHills();
         List<ABObject> block = vision.findBlocksRealShape();
-        List<ABObject> tnt = vision.findTNTs();
-        ArrayList<ABObject> allObjects = new ArrayList<ABObject>();
+
         GameState state = aRobot.getState();
 
 		// if there is a sling, then play, otherwise just skip.
@@ -162,42 +161,27 @@ public class NaiveAgent implements Runnable {
 				{
 					// random pick up a pig
 					//ABObject pig = pigs.get(randomGenerator.nextInt(pigs.size()));
+					System.out.println("hills");
                     for(int i=0;i<hill.size();i++){
                         ABObject h=hill.get(i);
-                        //System.out.println("hill id : "+h.id+" hill type : "+h.type+" hill shape : "+h.shape);
+                        System.out.println("hill id : "+h.id+" hill type : "+h.type+" hill shape : "+h.shape);
 
                     }
+                    System.out.println("blocks");
                     for(int i=0;i<block.size();i++){
                         ABObject b=block.get(i);
-                        //System.out.println(" block id "+b.id+" block type: "+b.type+" block shape : "+b.shape);
+                        System.out.println(" block id "+b.id+" block type: "+b.type+" block shape : "+b.shape);
 
                     }
-
-                    for(int i=0;i<tnt.size();i++){
-                        ABObject t=tnt.get(i);
-                        //System.out.println("tnt id : "+t.id+" tnt type : "+t.type+" tnt shape : "+t.shape);
-
-                    }
-
-                    allObjects.addAll(hill);
-                    allObjects.addAll(block);
-                    allObjects.addAll(tnt);
-
-
-                    for(int i=0;i<allObjects.size();i++){
-                        ABObject t=allObjects.get(i);
-                        System.out.println("object id: "+t.id+"    object type : "+t.type+"     object shape : "+t.shape);
-                    }
-
-                    //System.out.println("hi");
+                    System.out.println("hi");
                     int max = pigs.get(0).getCenter2Y();
                     ABObject pig=pigs.get(0);
-                    //System.out.println("hello 0"+pig.getCenter2X()+"  "+pig.getCenter2Y());
+                    System.out.println("hello 0"+pig.getCenter2X()+"  "+pig.getCenter2Y());
 
                     for(int i =1; i<pigs.size(); i++){
                         ABObject piggy = pigs.get(i);
-                    //    System.out.println(piggy.getCenter2X());
-                    //    System.out.println(piggy.getCenter2Y());
+                        System.out.println(piggy.getCenter2X());
+                        System.out.println(piggy.getCenter2Y());
 
                         if(piggy.getCenter2Y() < max) {
                             max = piggy.getCenter2X();
@@ -206,7 +190,7 @@ public class NaiveAgent implements Runnable {
                         }
                     }
 
-                    //System.out.println("hello final"+pig.getCenter2X()+"  "+pig.getCenter2Y());
+                    System.out.println("hello final"+pig.getCenter2X()+"  "+pig.getCenter2Y());
 
                     Point _tpt = pig.getCenter();// if the target is very close to before, randomly choose a
 					// point near it
@@ -337,4 +321,3 @@ public class NaiveAgent implements Runnable {
 
 	}
 }
-
